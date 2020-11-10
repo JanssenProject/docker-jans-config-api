@@ -18,7 +18,7 @@ RUN apk update \
 # ==========
 
 ENV CN_VERSION=5.0.0-SNAPSHOT
-ENV CN_BUILD_DATE="2020-11-03 16:51"
+ENV CN_BUILD_DATE="2020-11-09 09:50"
 ENV CN_SOURCE_URL=https://maven.jans.io/maven/io/jans/jans-config-api/${CN_VERSION}/jans-config-api-${CN_VERSION}-runner.jar
 
 RUN mkdir -p /opt/config-api \
@@ -31,7 +31,6 @@ EXPOSE 9444
 # Python
 # ======
 
-RUN apk add --no-cache #py3-cryptography
 COPY requirements.txt /app/requirements.txt
 RUN pip3 install -U pip \
     && pip3 install --no-cache-dir -r /app/requirements.txt \
