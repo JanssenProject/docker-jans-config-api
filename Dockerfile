@@ -152,7 +152,8 @@ RUN chown -R 1000:1000 /etc/jans \
     && chgrp -R 0 /deploy && chmod -R g=u /deploy \
     && chgrp -R 0 /etc/certs && chmod -R g=u /etc/certs \
     && chgrp -R 0 /etc/jans && chmod -R g=u /etc/jans \
-    && chgrp -R 0 /opt/jans && chmod -R g=u /opt/jans
+    && chgrp -R 0 /opt/jans && chmod -R g=u /opt/jans \
+    && chgrp -R 0 /usr/lib/jvm/default-jvm/jre/lib/security/cacerts && chmod -R g=u /usr/lib/jvm/default-jvm/jre/lib/security/cacerts
 
 USER 1000
 
