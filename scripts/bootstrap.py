@@ -11,25 +11,11 @@ from jans.pycloudlib.persistence import sync_couchbase_truststore
 from jans.pycloudlib.persistence import sync_ldap_truststore
 from jans.pycloudlib.utils import cert_to_truststore
 from jans.pycloudlib.utils import safe_render
-from jans.pycloudlib.utils import get_random_chars
-from jans.pycloudlib.utils import encode_text
 
 
 def render_app_properties(manager):
-    # TODO: move to configuration-manager
     client_id = manager.config.get("jca_client_id")
-    if not client_id:
-        client_id = f"1801.{uuid4()}"
-        manager.config.set("jca_client_id", client_id)
-
-    # TODO: move to configuration-manager
     client_encoded_pw = manager.secret.get("jca_client_encoded_pw")
-    if not client_encoded_pw:
-        client_encoded_pw = encode_text(
-            get_random_chars(),
-            manager.secret.get("encoded_salt"),
-        )
-        manager.secret.set("jca_client_encoded_pw", client_encoded_pw)
 
     ctx = {
         "jca_log_level": os.environ.get("CN_CONFIG_API_LOG_LEVEL", "INFO"),
