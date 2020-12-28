@@ -1,5 +1,4 @@
 import os
-from uuid import uuid4
 
 from jans.pycloudlib import get_manager
 from jans.pycloudlib.persistence import render_couchbase_properties
